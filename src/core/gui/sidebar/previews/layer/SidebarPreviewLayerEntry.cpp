@@ -72,8 +72,14 @@ void SidebarPreviewLayerEntry::checkboxToggled() {
     (dynamic_cast<SidebarPreviewLayers*>(sidebar))->layerVisibilityChanged(layerId, check);
 }
 
-void SidebarPreviewLayerEntry::mouseButtonPressCallback() {
+void SidebarPreviewLayerEntry::mouseButtonClickCallback() {
     (dynamic_cast<SidebarPreviewLayers*>(sidebar))->layerSelected(index);
+}
+void SidebarPreviewLayerEntry::mouseButtonPressCallback() {
+    return;
+}
+void SidebarPreviewLayerEntry::mouseButtonReleaseCallback() {
+    return;
 }
 
 auto SidebarPreviewLayerEntry::getRenderType() -> PreviewRenderType {

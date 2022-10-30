@@ -30,8 +30,12 @@ public:
 
 protected:
     SidebarPreviewPages* sidebar;
+    void mouseButtonClickCallback() override;
     void mouseButtonPressCallback() override;
+    void mouseButtonReleaseCallback() override;
 
 private:
     friend class PreviewJob;
+    int x;
+    int y;
 };

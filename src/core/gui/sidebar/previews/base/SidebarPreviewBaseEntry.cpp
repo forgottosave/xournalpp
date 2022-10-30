@@ -13,7 +13,13 @@
 #include "util/Color.h"                     // for cairo_set_source_rgbi
 #include "util/i18n.h"                      // for _
 
+#include "gui/inputdevices/InputEvents.h"            // for InputEvent
 #include "SidebarPreviewBase.h"  // for SidebarPreviewBase
+
+void SidebarPreviewBaseEntry::handleEvent(int x, int y) {
+    this->x = x;
+    this->y = y;
+}    
 
 SidebarPreviewBaseEntry::SidebarPreviewBaseEntry(SidebarPreviewBase* sidebar, const PageRef& page):
         sidebar(sidebar), page(page) {
@@ -27,8 +33,21 @@ SidebarPreviewBaseEntry::SidebarPreviewBaseEntry(SidebarPreviewBase* sidebar, co
 
     g_signal_connect(this->widget, "draw", G_CALLBACK(drawCallback), this);
 
+    // TODO chck if click is even necessary
     g_signal_connect(this->widget, "clicked", G_CALLBACK(+[](GtkWidget* widget, SidebarPreviewBaseEntry* self) {
+                         self->mouseButtonClickCallback();
+                         return true;
+                     }),
+                     this);
+
+    g_signal_connect(this->widget, "pressed", G_CALLBACK(+[](GtkWidget* widget, SidebarPreviewBaseEntry* self) {
                          self->mouseButtonPressCallback();
+                         return true;
+                     }),
+                     this);
+
+    g_signal_connect(this->widget, "released", G_CALLBACK(+[](GtkWidget* widget, SidebarPreviewBaseEntry* self) {
+                         self->mouseButtonReleaseCallback();
                          return true;
                      }),
                      this);

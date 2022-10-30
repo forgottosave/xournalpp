@@ -55,6 +55,19 @@ public:
     virtual void updateSize();
 
     /**
+     * test
+    */
+    int x;
+    int y;
+    virtual void setX(int x) {
+        this->x = x;
+    }
+    virtual void setY(int y) {
+        this->y = y;
+    }
+    void handleEvent(int x, int y);
+
+    /**
      * @return What should be rendered
      */
     virtual PreviewRenderType getRenderType() = 0;
@@ -63,7 +76,9 @@ private:
     static gboolean drawCallback(GtkWidget* widget, cairo_t* cr, SidebarPreviewBaseEntry* preview);
 
 protected:
+    virtual void mouseButtonClickCallback() = 0;
     virtual void mouseButtonPressCallback() = 0;
+    virtual void mouseButtonReleaseCallback() = 0;
 
     virtual int getWidgetWidth();
     virtual int getWidgetHeight();

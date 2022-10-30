@@ -50,7 +50,9 @@ public:
     void setVisibleCheckbox(bool enabled);
 
 protected:
+    void mouseButtonClickCallback() override;
     void mouseButtonPressCallback() override;
+    void mouseButtonReleaseCallback() override;
     void checkboxToggled();
 
     SidebarPreviewLayers* sidebar;

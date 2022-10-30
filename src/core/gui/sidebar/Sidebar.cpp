@@ -63,6 +63,7 @@ void Sidebar::initPages(GtkWidget* sidebarContents, GladeGui* gui) {
 void Sidebar::buttonClicked(GtkToolButton* toolbutton, SidebarPageButton* buttonData) {
     if (gtk_toggle_tool_button_get_active(GTK_TOGGLE_TOOL_BUTTON(toolbutton))) {
         if (buttonData->sidebar->visiblePage != buttonData->page->getWidget()) {
+            std::cout << "TEST" << std::endl;
             buttonData->sidebar->setSelectedPage(buttonData->index);
         }
     } else if (buttonData->sidebar->visiblePage == buttonData->page->getWidget()) {
