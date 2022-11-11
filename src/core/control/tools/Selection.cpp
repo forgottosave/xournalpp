@@ -27,19 +27,42 @@ RectSelection::RectSelection(double x, double y) {
 
 RectSelection::~RectSelection() = default;
 
-auto RectSelection::finalize(PageRef page) -> bool {
+auto RectSelection::finalize(PageRef page, bool allLayers) -> size_t {
     this->page = page;
+    size_t layerId = 0;
 
-    Layer* l = page->getSelectedLayer();
-    for (Element* e: l->getElements()) {
-        if (e->isInSelection(this)) {
-            this->selectedElements.push_back(e);
+    // TODO check for mode
+    if (allLayers) {
+        // TODO store old layer
+        for (int layerNo = page->getLayers()->size() - 1; layerNo >= 0; layerNo--) {
+            Layer* l = page->getLayers()->at(layerNo);
+            bool selectionOnLayer = false;
+            if (l->isVisible()) {
+                for (Element* e: l->getElements()) {
+                    if (e->isInSelection(this)) {
+                        this->selectedElements.push_back(e);
+                        selectionOnLayer = true;
+                    }
+                }
+            }
+            if (selectionOnLayer) {
+                layerId = layerNo + 1;
+                break;
+            }
+        }
+    } else {
+        Layer* l = page->getSelectedLayer();
+        for (Element* e: l->getElements()) {
+            if (e->isInSelection(this)) {
+                this->selectedElements.push_back(e);
+                layerId = page->getSelectedLayerId();
+            }
         }
     }
 
     this->viewPool->dispatchAndClear(xoj::view::SelectionView::DELETE_VIEWS_REQUEST, this->bbox);
 
-    return !this->selectedElements.empty();
+    return layerId;
 }
 
 auto RectSelection::contains(double x, double y) const -> bool { return bbox.contains(x, y); }
@@ -153,19 +176,22 @@ auto RegionSelect::contains(double x, double y) const -> bool {
     return (hits & 1) != 0;
 }
 
-auto RegionSelect::finalize(PageRef page) -> bool {
+auto RegionSelect::finalize(PageRef page, bool allLayers) -> size_t {
     this->page = page;
+    size_t layerId = 0;
 
+    // TODO check multiple layers if necessary
     Layer* l = page->getSelectedLayer();
     for (Element* e: l->getElements()) {
         if (e->isInSelection(this)) {
             this->selectedElements.push_back(e);
+            layerId = page->getSelectedLayerId();
         }
     }
 
     this->viewPool->dispatchAndClear(xoj::view::SelectionView::DELETE_VIEWS_REQUEST, this->bbox);
 
-    return !this->selectedElements.empty();
+    return layerId;
 }
 
 auto RegionSelect::userTapped(double zoom) const -> bool {
