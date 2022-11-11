@@ -21,6 +21,7 @@
 #include "control/AudioController.h"                // for AudioController
 #include "control/Control.h"                        // for Control
 #include "control/ScrollHandler.h"                  // for ScrollHandler
+#include "control/layer/LayerController.h"          // for LayerControl
 #include "control/SearchControl.h"                  // for SearchControl
 #include "control/Tool.h"                           // for Tool
 #include "control/ToolEnums.h"                      // for DRAWING_TYPE_SPLINE
@@ -715,7 +716,11 @@ auto XojPageView::onButtonReleaseEvent(const PositionInputData& pos) -> bool {
     }
 
     if (this->selection) {
-        if (this->selection->finalize(this->page)) {
+        // TODO check for mode "selectionOverAllLayers", instad of true
+        size_t layerOfFinalizedSel = this->selection->finalize(this->page, true);
+        if (layerOfFinalizedSel) {
+            // TODO be able to store return layer
+            this->getXournal()->getControl()->getLayerController()->switchToLay(layerOfFinalizedSel);
             xournal->setSelection(new EditSelection(control->getUndoRedoHandler(), this->selection.get(), this));
         } else {
             const double zoom = xournal->getZoom();
