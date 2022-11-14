@@ -220,9 +220,6 @@ void EditSelection::finalizeSelection() {
     this->view = v;
 
     PageRef page = this->view->getPage();
-
-
-    
     Layer* layer = page->getSelectedLayer();
     this->contents->finalizeSelection(this->getRect(), this->snappedBounds, this->aspectRatio, layer, page, this->view,
                                       this->undo);

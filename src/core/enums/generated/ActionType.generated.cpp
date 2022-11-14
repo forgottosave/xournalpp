@@ -232,12 +232,12 @@ auto ActionType_fromString(const string& value) -> ActionType {
         return ACTION_TOOL_SELECT_RECT;
     }
 
-    if (value == "ACTION_TOOL_SELECT_MULTILAYER_RECT") {
-        return ACTION_TOOL_SELECT_MULTILAYER_RECT;
-    }
-
     if (value == "ACTION_TOOL_SELECT_REGION") {
         return ACTION_TOOL_SELECT_REGION;
+    }
+
+    if (value == "ACTION_TOOL_SELECT_MULTILAYER_RECT") {
+        return ACTION_TOOL_SELECT_MULTILAYER_RECT;
     }
 
     if (value == "ACTION_TOOL_SELECT_MULTILAYER_REGION") {
@@ -882,12 +882,12 @@ auto ActionType_toString(ActionType value) -> string {
         return "ACTION_TOOL_SELECT_RECT";
     }
 
-    if (value == ACTION_TOOL_SELECT_MULTILAYER_RECT) {
-        return "ACTION_TOOL_SELECT_MULTILAYER_RECT";
-    }
-
     if (value == ACTION_TOOL_SELECT_REGION) {
         return "ACTION_TOOL_SELECT_REGION";
+    }
+
+    if (value == ACTION_TOOL_SELECT_MULTILAYER_RECT) {
+        return "ACTION_TOOL_SELECT_MULTILAYER_RECT";
     }
 
     if (value == ACTION_TOOL_SELECT_MULTILAYER_REGION) {

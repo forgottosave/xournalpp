@@ -605,8 +605,6 @@ auto XournalView::getZoom() const -> double { return control->getZoomControl()->
 auto XournalView::getDpiScaleFactor() const -> int { return gtk_widget_get_scale_factor(widget); }
 
 void XournalView::clearSelection() {
-    // TODO switch back to old layer if needed
-
     EditSelection* sel = GTK_XOURNAL(widget)->selection;
     GTK_XOURNAL(widget)->selection = nullptr;
     delete sel;

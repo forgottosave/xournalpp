@@ -120,10 +120,10 @@ auto toolTypeToString(ToolType type) -> std::string {
             return "image";
         case TOOL_SELECT_RECT:
             return "selectRect";
-        case TOOL_SELECT_MULTILAYER_RECT:
-            return "selectMultiLayerRect";
         case TOOL_SELECT_REGION:
             return "selectRegion";
+        case TOOL_SELECT_MULTILAYER_RECT:
+            return "selectMultiLayerRect";
         case TOOL_SELECT_MULTILAYER_REGION:
             return "selectMultiLayerRegion";
         case TOOL_SELECT_OBJECT:
@@ -177,11 +177,11 @@ auto toolTypeFromString(const std::string& type) -> ToolType {
     if (type == "selectRect") {
         return TOOL_SELECT_RECT;
     }
-    if (type == "selectMultiLayerRect") {
-        return TOOL_SELECT_MULTILAYER_RECT;
-    }
     if (type == "selectRegion") {
         return TOOL_SELECT_REGION;
+    }
+    if (type == "selectMultiLayerRect") {
+        return TOOL_SELECT_MULTILAYER_RECT;
     }
     if (type == "selectMultiLayerRegion") {
         return TOOL_SELECT_MULTILAYER_REGION;

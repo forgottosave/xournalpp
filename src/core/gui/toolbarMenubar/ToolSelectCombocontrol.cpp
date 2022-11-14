@@ -62,21 +62,21 @@ void ToolSelectCombocontrol::selected(ActionGroup group, ActionType action) {
                                          GTK_ICON_SIZE_SMALL_TOOLBAR);
 
             description = _("Select Rectangle");
-        } else if (action == ACTION_TOOL_SELECT_MULTILAYER_RECT && this->action != ACTION_TOOL_SELECT_MULTILAYER_RECT) {
-            this->action = ACTION_TOOL_SELECT_MULTILAYER_RECT;
-            gtk_image_set_from_icon_name(GTK_IMAGE(iconWidget), toolMenuHandler->iconName("select-rect").c_str(),
-                                         GTK_ICON_SIZE_SMALL_TOOLBAR);
-
-            description = _("Multi-Layer Select Rectangle");
         } else if (action == ACTION_TOOL_SELECT_REGION && this->action != ACTION_TOOL_SELECT_REGION) {
             this->action = ACTION_TOOL_SELECT_REGION;
             gtk_image_set_from_icon_name(GTK_IMAGE(iconWidget), toolMenuHandler->iconName("select-lasso").c_str(),
                                          GTK_ICON_SIZE_SMALL_TOOLBAR);
 
             description = _("Select Region");
+        } else if (action == ACTION_TOOL_SELECT_MULTILAYER_RECT && this->action != ACTION_TOOL_SELECT_MULTILAYER_RECT) {
+            this->action = ACTION_TOOL_SELECT_MULTILAYER_RECT;
+            gtk_image_set_from_icon_name(GTK_IMAGE(iconWidget), toolMenuHandler->iconName("select-multilayer-rect").c_str(),
+                                         GTK_ICON_SIZE_SMALL_TOOLBAR);
+
+            description = _("Multi-Layer Select Rectangle");
         } else if (action == ACTION_TOOL_SELECT_MULTILAYER_REGION && this->action != ACTION_TOOL_SELECT_MULTILAYER_REGION) {
             this->action = ACTION_TOOL_SELECT_MULTILAYER_REGION;
-            gtk_image_set_from_icon_name(GTK_IMAGE(iconWidget), toolMenuHandler->iconName("select-lasso").c_str(),
+            gtk_image_set_from_icon_name(GTK_IMAGE(iconWidget), toolMenuHandler->iconName("select-multilayer-lasso").c_str(),
                                          GTK_ICON_SIZE_SMALL_TOOLBAR);
 
             description = _("Multi-Layer Select Region");
