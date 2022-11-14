@@ -92,7 +92,9 @@ ButtonConfigGui::ButtonConfigGui(GladeSearchpath* gladeSearchPath, GtkWidget* w,
     addTypeCB("tool-image", _("Insert image"), TOOL_IMAGE);
     addTypeCB("spacer", _("Vertical space"), TOOL_VERTICAL_SPACE);
     addTypeCB("select-lasso", _("Select region"), TOOL_SELECT_REGION);
+    addTypeCB("select-lasso", _("Select multi layer region"), TOOL_SELECT_MULTILAYER_REGION);
     addTypeCB("select-rect", _("Select rectangle"), TOOL_SELECT_RECT);
+    addTypeCB("select-lasso", _("Select multi layer rect"), TOOL_SELECT_MULTILAYER_RECT);
     addTypeCB("hand", _("Hand"), TOOL_HAND);
     addTypeCB("floating-toolbox", _("Floating Toolbox (experimental)"), TOOL_FLOATING_TOOLBOX);
     addTypeCB("select-pdf-text-head-tail", _("Select Text from pdf"), TOOL_SELECT_PDF_TEXT_LINEAR);
@@ -308,7 +310,9 @@ void ButtonConfigGui::enableDisableTools() {
             // case TOOL_DRAW_RECT:
             // case TOOL_DRAW_ELLIPSE:
         case TOOL_SELECT_RECT:
+        case TOOL_SELECT_MULTILAYER_RECT:
         case TOOL_SELECT_REGION:
+        case TOOL_SELECT_MULTILAYER_REGION:
         case TOOL_VERTICAL_SPACE:
         case TOOL_HAND:
             gtk_widget_set_visible(cbThickness, false);
