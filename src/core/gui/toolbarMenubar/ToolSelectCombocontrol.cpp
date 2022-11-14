@@ -21,8 +21,8 @@ ToolSelectCombocontrol::ToolSelectCombocontrol(ToolMenuHandler* toolMenuHandler,
         popup(gtk_menu_new()) {
     addMenuitem(_("Select Rectangle"), toolMenuHandler->iconName("select-rect"), ACTION_TOOL_SELECT_RECT, GROUP_TOOL);
     addMenuitem(_("Select Region"), toolMenuHandler->iconName("select-lasso"), ACTION_TOOL_SELECT_REGION, GROUP_TOOL);
-    addMenuitem(_("Select Multi-Layer Rectangle"), toolMenuHandler->iconName("select-rect"), ACTION_TOOL_SELECT_MULTILAYER_RECT, GROUP_TOOL);
-    addMenuitem(_("Select Multi-Layer Region"), toolMenuHandler->iconName("select-lasso"), ACTION_TOOL_SELECT_MULTILAYER_REGION, GROUP_TOOL);
+    addMenuitem(_("Select Multi-Layer Rectangle"), toolMenuHandler->iconName("select-multilayer-rect"), ACTION_TOOL_SELECT_MULTILAYER_RECT, GROUP_TOOL);
+    addMenuitem(_("Select Multi-Layer Region"), toolMenuHandler->iconName("select-multilayer-lasso"), ACTION_TOOL_SELECT_MULTILAYER_REGION, GROUP_TOOL);
     addMenuitem(_("Select Object"), toolMenuHandler->iconName("object-select"), ACTION_TOOL_SELECT_OBJECT, GROUP_TOOL);
     addMenuitem(_("Play Object"), toolMenuHandler->iconName("object-play"), ACTION_TOOL_PLAY_OBJECT, GROUP_TOOL);
 
