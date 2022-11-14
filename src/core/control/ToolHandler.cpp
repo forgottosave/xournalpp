@@ -75,8 +75,8 @@ void ToolHandler::initTools() {
     tools[TOOL_SELECT_RECT - TOOL_PEN] =
             std::make_unique<Tool>("selectRect", TOOL_SELECT_RECT, Colors::black, TOOL_CAP_NONE, std::nullopt);
 
-    tools[TOOL_SELECT_MUTILAYER_RECT - TOOL_PEN] =
-            std::make_unique<Tool>("selectRect", TOOL_SELECT_MUTILAYER_RECT, Color{0x000000U}, TOOL_CAP_NONE, std::nullopt);
+    tools[TOOL_SELECT_MULTILAYER_RECT - TOOL_PEN] =
+            std::make_unique<Tool>("selectRect", TOOL_SELECT_MULTILAYER_RECT, Color{0x000000U}, TOOL_CAP_NONE, std::nullopt);
 
     tools[TOOL_SELECT_REGION - TOOL_PEN] =
             std::make_unique<Tool>("selectRegion", TOOL_SELECT_REGION, Colors::black, TOOL_CAP_NONE, std::nullopt);
@@ -546,7 +546,7 @@ void ToolHandler::setSelectionEditTools(bool setColor, bool setSize, bool setFil
         t->setFill(false);
     }
 
-    if (this->activeTool->type == TOOL_SELECT_RECT || this->activeTool->type == TOOL_SELECT_MUTILAYER_RECT ||
+    if (this->activeTool->type == TOOL_SELECT_RECT || this->activeTool->type == TOOL_SELECT_MULTILAYER_RECT ||
         this->activeTool->type == TOOL_SELECT_REGION || this->activeTool->type == TOOL_SELECT_OBJECT ||
         this->activeTool->type == TOOL_PLAY_OBJECT) {
         this->stateChangeListener->toolColorChanged();
@@ -566,7 +566,7 @@ auto ToolHandler::isSinglePageTool() const -> bool {
              drawingType == DRAWING_TYPE_ELLIPSE || drawingType == DRAWING_TYPE_COORDINATE_SYSTEM ||
              drawingType == DRAWING_TYPE_LINE || drawingType == DRAWING_TYPE_RECTANGLE ||
              drawingType == DRAWING_TYPE_SPLINE)) ||
-           toolType == TOOL_SELECT_REGION || toolType == TOOL_SELECT_RECT || toolType == TOOL_SELECT_MUTILAYER_RECT || toolType == TOOL_SELECT_OBJECT ||
+           toolType == TOOL_SELECT_REGION || toolType == TOOL_SELECT_RECT || toolType == TOOL_SELECT_MULTILAYER_RECT || toolType == TOOL_SELECT_OBJECT ||
            toolType == TOOL_DRAW_RECT || toolType == TOOL_DRAW_ELLIPSE || toolType == TOOL_DRAW_COORDINATE_SYSTEM ||
            toolType == TOOL_DRAW_ARROW || toolType == TOOL_DRAW_DOUBLE_ARROW || toolType == TOOL_FLOATING_TOOLBOX ||
            toolType == TOOL_DRAW_SPLINE || toolType == TOOL_SELECT_PDF_TEXT_LINEAR ||

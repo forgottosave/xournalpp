@@ -612,7 +612,7 @@ void Control::actionPerformed(ActionType type, ActionGroup group, GtkToolButton*
             break;
         case ACTION_TOOL_SELECT_MULTILAYER_RECT:
             if (enabled) {
-                selectTool(TOOL_SELECT_MUTILAYER_RECT);
+                selectTool(TOOL_SELECT_MULTILAYER_RECT);
             }
             break;
         case ACTION_TOOL_SELECT_REGION:

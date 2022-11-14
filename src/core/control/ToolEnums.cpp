@@ -99,7 +99,7 @@ auto drawingTypeFromString(const std::string& type) -> DrawingType {
 auto isSelectToolType(ToolType type) -> bool {
     return type == TOOL_SELECT_RECT
             || type == TOOL_SELECT_REGION
-            || type == TOOL_SELECT_MUTILAYER_RECT
+            || type == TOOL_SELECT_MULTILAYER_RECT
             || type == TOOL_SELECT_OBJECT;
 }
 
@@ -119,7 +119,7 @@ auto toolTypeToString(ToolType type) -> std::string {
             return "image";
         case TOOL_SELECT_RECT:
             return "selectRect";
-        case TOOL_SELECT_MUTILAYER_RECT:
+        case TOOL_SELECT_MULTILAYER_RECT:
             return "selectMultiLayerRect";
         case TOOL_SELECT_REGION:
             return "selectRegion";
@@ -175,7 +175,7 @@ auto toolTypeFromString(const std::string& type) -> ToolType {
         return TOOL_SELECT_RECT;
     }
     if (type == "selectMultiLayerRect") {
-        return TOOL_SELECT_MUTILAYER_RECT;
+        return TOOL_SELECT_MULTILAYER_RECT;
     }
     if (type == "selectRegion") {
         return TOOL_SELECT_REGION;

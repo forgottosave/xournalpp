@@ -1599,7 +1599,7 @@
                             <property name="name">menuToolsSelectMultiLayerRectangle</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Select Multi Layer RegReion</property>
+                            <property name="label" translatable="yes">Select Multi-Layer Rectangle</property>
                             <property name="use-underline">True</property>
                             <property name="draw-as-radio">True</property>
                             <signal name="toggled" handler="ACTION_TOOL_SELECT_MULTILAYER_RECT" swapped="no"/>
