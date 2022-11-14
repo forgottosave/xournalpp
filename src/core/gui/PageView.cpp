@@ -671,12 +671,13 @@ auto XojPageView::onButtonReleaseEvent(const PositionInputData& pos) -> bool {
 
     if (this->selection) {
         // TODO check for mode "selectionOverAllLayers", instad of true
-        size_t layerOfFinalizedSel = this->selection->finalize(this->page, true);
+        size_t layerOfFinalizedSel = this->selection->finalize(this->page, /*allLayers*/ true);
         if (layerOfFinalizedSel) {
             // TODO be able to store return layer
-            this->getXournal()->getControl()->getLayerController()->switchToLay(layerOfFinalizedSel);
+            xournal->getControl()->getLayerController()->switchToLay(layerOfFinalizedSel);
             xournal->setSelection(new EditSelection(control->getUndoRedoHandler(), this->selection.get(), this));
         } else {
+            // TODO think of what should happen with a click selection
             double zoom = xournal->getZoom();
             if (this->selection->userTapped(zoom)) {
                 SelectObject select(this);
