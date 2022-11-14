@@ -240,6 +240,10 @@ auto ActionType_fromString(const string& value) -> ActionType {
         return ACTION_TOOL_SELECT_REGION;
     }
 
+    if (value == "ACTION_TOOL_SELECT_MULTILAYER_REGION") {
+        return ACTION_TOOL_SELECT_MULTILAYER_REGION;
+    }
+
     if (value == "ACTION_TOOL_SELECT_OBJECT") {
         return ACTION_TOOL_SELECT_OBJECT;
     }
@@ -884,6 +888,10 @@ auto ActionType_toString(ActionType value) -> string {
 
     if (value == ACTION_TOOL_SELECT_REGION) {
         return "ACTION_TOOL_SELECT_REGION";
+    }
+
+    if (value == ACTION_TOOL_SELECT_MULTILAYER_REGION) {
+        return "ACTION_TOOL_SELECT_MULTILAYER_REGION";
     }
 
     if (value == ACTION_TOOL_SELECT_OBJECT) {
