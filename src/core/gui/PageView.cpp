@@ -397,12 +397,22 @@ auto XojPageView::onButtonPressEvent(const PositionInputData& pos) -> bool {
         auto* zoomControl = this->getXournal()->getControl()->getZoomControl();
         this->verticalSpace = std::make_unique<VerticalToolHandler>(this->page, this->settings, y, pos.isControlDown());
         this->overlayViews.emplace_back(this->verticalSpace->createView(this, zoomControl, this->settings));
-    } else if (h->getToolType() == TOOL_SELECT_RECT || h->getToolType() == TOOL_SELECT_REGION ||
+    } else if (h->getToolType() == TOOL_SELECT_RECT || h->getToolType() == TOOL_SELECT_MUTILAYER_RECT || h->getToolType() == TOOL_SELECT_REGION ||
                h->getToolType() == TOOL_PLAY_OBJECT || h->getToolType() == TOOL_SELECT_OBJECT ||
                h->getToolType() == TOOL_SELECT_PDF_TEXT_LINEAR || h->getToolType() == TOOL_SELECT_PDF_TEXT_RECT) {
         if (h->getToolType() == TOOL_SELECT_RECT) {
             if (!selection) {
                 this->selection = std::make_unique<RectSelection>(x, y);
+                this->overlayViews.emplace_back(std::make_unique<xoj::view::SelectionView>(
+                        this->selection.get(), this, this->settings->getSelectionColor()));
+            } else {
+                assert(settings->getInputSystemTPCButtonEnabled() &&
+                       "the selection has already been created by a stylus button press while the stylus was "
+                       "hovering!");
+            }
+        } else if (h->getToolType() == TOOL_SELECT_MUTILAYER_RECT) {
+            if (!selection) {
+                this->selection = std::make_unique<RectSelection>(x, y, /*multiLayer*/ true);
                 this->overlayViews.emplace_back(std::make_unique<xoj::view::SelectionView>(
                         this->selection.get(), this, this->settings->getSelectionColor()));
             } else {
@@ -716,8 +726,7 @@ auto XojPageView::onButtonReleaseEvent(const PositionInputData& pos) -> bool {
     }
 
     if (this->selection) {
-        // TODO check for mode "selectionOverAllLayers", instad of true
-        size_t layerOfFinalizedSel = this->selection->finalize(this->page, /*allLayers*/ true);
+        size_t layerOfFinalizedSel = this->selection->finalize(this->page);
         if (layerOfFinalizedSel) {
             // TODO be able to store return layer
             xournal->getControl()->getLayerController()->switchToLay(layerOfFinalizedSel);

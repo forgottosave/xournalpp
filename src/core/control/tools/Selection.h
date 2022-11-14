@@ -32,7 +32,7 @@ public:
     /**
      * @return layerId of selected objects, 0 if there is nothing in RectSelection
     */
-    virtual size_t finalize(PageRef page, bool allLayers = false) = 0;
+    virtual size_t finalize(PageRef page) = 0;
     virtual void currentPos(double x, double y) = 0;
     virtual bool userTapped(double zoom) const = 0;
     virtual const std::vector<BoundaryPoint>& getBoundary() const = 0;
@@ -44,6 +44,8 @@ public:
 private:
 protected:
     std::vector<BoundaryPoint> boundaryPoints;
+
+    bool multiLayer;
 
     std::vector<Element*> selectedElements;
     PageRef page;
@@ -57,11 +59,11 @@ protected:
 
 class RectSelection: public Selection {
 public:
-    RectSelection(double x, double y);
+    RectSelection(double x, double y, bool multiLayer = false);
     ~RectSelection() override;
 
 public:
-    size_t finalize(PageRef page, bool allLayers) override;
+    size_t finalize(PageRef page) override;
     void currentPos(double x, double y) override;
     bool contains(double x, double y) const override;
     bool userTapped(double zoom) const override;
@@ -77,10 +79,10 @@ private:
 
 class RegionSelect: public Selection {
 public:
-    RegionSelect(double x, double y);
+    RegionSelect(double x, double y, bool multiLayer = false);
 
 public:
-    size_t finalize(PageRef page, bool allLayers) override;
+    size_t finalize(PageRef page) override;
     void currentPos(double x, double y) override;
     bool contains(double x, double y) const override;
     bool userTapped(double zoom) const override;

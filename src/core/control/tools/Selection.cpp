@@ -17,21 +17,22 @@ Selection::~Selection() = default;
 
 //////////////////////////////////////////////////////////
 
-RectSelection::RectSelection(double x, double y) {
+RectSelection::RectSelection(double x, double y, bool multiLayer) {
     bbox.addPoint(x, y);
     this->sx = x;
     this->sy = y;
     this->ex = x;
     this->ey = y;
+    this->multiLayer = multiLayer;
 }
 
 RectSelection::~RectSelection() = default;
 
-auto RectSelection::finalize(PageRef page, bool allLayers) -> size_t {
+auto RectSelection::finalize(PageRef page) -> size_t {
     this->page = page;
     size_t layerId = 0;
 
-    if (allLayers) {
+    if (multiLayer) {
         for (int layerNo = page->getLayers()->size() - 1; layerNo >= 0; layerNo--) {
             Layer* l = page->getLayers()->at(layerNo);
             bool selectionOnLayer = false;
@@ -88,7 +89,10 @@ auto RectSelection::getBoundary() const -> const std::vector<BoundaryPoint>& { r
 
 //////////////////////////////////////////////////////////
 
-RegionSelect::RegionSelect(double x, double y) { currentPos(x, y); }
+RegionSelect::RegionSelect(double x, double y, bool multiLayer) {
+    currentPos(x, y);
+    this->multiLayer = multiLayer;
+}
 
 void RegionSelect::currentPos(double x, double y) {
     boundaryPoints.emplace_back(x, y);
@@ -174,14 +178,11 @@ auto RegionSelect::contains(double x, double y) const -> bool {
     return (hits & 1) != 0;
 }
 
-auto RegionSelect::finalize(PageRef page, bool allLayers) -> size_t {
+auto RegionSelect::finalize(PageRef page) -> size_t {
     this->page = page;
     size_t layerId = 0;
 
-    // TODO remove this line:
-    allLayers = false;
-
-    if (allLayers) {
+    if (multiLayer) {
         for (int layerNo = page->getLayers()->size() - 1; layerNo >= 0; layerNo--) {
             Layer* l = page->getLayers()->at(layerNo);
             bool selectionOnLayer = false;
