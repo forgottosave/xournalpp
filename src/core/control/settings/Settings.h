@@ -880,7 +880,7 @@ private:
     /**
      * View mode attributes, separated by a colon (,)
      * - showMenubar,showToolbar,showSidebar = show widget
-     * - fullscreen                          = fullscreen
+     * - goFullscreen                        = fullscreen
      */
     std::vector<std::string> viewModeAttributes;
 
