@@ -21,6 +21,7 @@
 #include "model/FormatDefinitions.h"                // for FormatUnits, XOJ_...
 #include "util/Color.h"
 #include "util/PathUtil.h"                          // for getConfigFile
+#include "util/StringUtils.h"                       // for StringUtils...
 #include "util/Util.h"                              // for PRECISION_FORMAT_...
 #include "util/i18n.h"                              // for _
 
@@ -163,6 +164,10 @@ void Settings::loadDefault() {
     this->buttonConfig[BUTTON_STYLUS_TWO] =
             new ButtonConfig(TOOL_NONE, Colors::black, TOOL_SIZE_NONE, DRAWING_TYPE_DEFAULT, ERASER_TYPE_NONE);
 
+    // view modes
+    this->viewModes = std::vector<std::string>{"default","fullscreen","presentation"};
+    this->showElements =std::vector<std::string>{"menubar,toolbar,sidebar","toolbar,sidebar",""};
+    // deprecated since view modes introduced
     this->fullscreenHideElements = "mainMenubar";
     this->presentationHideElements = "mainMenubar,sidebarContents";
 
@@ -222,6 +227,35 @@ void Settings::loadDefault() {
     this->stabilizerMass = 5.0;
     this->stabilizerFinalizeStroke = true;
     /**/
+}
+
+auto Settings::loadViewMode(size_t mode) -> bool {
+    if (mode < 0 || mode > showElements.size()) {
+        return false;
+    }
+    auto elements = showElements.at(mode);
+    menubarVisible = false;
+    showSidebar = false;
+    showToolbar = false;
+    for (const string& element: StringUtils::split(elements, ',')) {
+        if (element == "menubar" || element == "mainMenubar") {
+            menubarVisible = true;
+        } else if (element == "sidebar" || element == "sidebarContents") {
+            showSidebar = true;
+        } else if (element == "toolbar") {
+            showToolbar = true;
+        }
+    }
+    this->activeViewMode = mode;
+    return true;
+}
+
+auto Settings::getActiveViewMode() const -> bool {
+    return activeViewMode;
+}
+
+auto Settings::getViewModeStrings() const -> std::vector<std::string> {
+    return viewModes;
 }
 
 /**
