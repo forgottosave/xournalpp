@@ -13,7 +13,7 @@
    width="22"
    version="1.1"
    id="svg3799"
-   sodipodi:docname="xopp-select-multilayer-rect.svg"
+   sodipodi:docname="xopp-select-multilayer-rect-V2.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata3803">
@@ -36,15 +36,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1103"
-     inkscape:window-height="1082"
+     inkscape:window-width="1731"
+     inkscape:window-height="1170"
      id="namedview3801"
      showgrid="false"
      inkscape:zoom="32"
-     inkscape:cx="9.2826548"
+     inkscape:cx="3.6889048"
      inkscape:cy="10.146119"
-     inkscape:window-x="1527"
-     inkscape:window-y="796"
+     inkscape:window-x="899"
+     inkscape:window-y="708"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg3799" />
   <defs
@@ -89,7 +89,7 @@
        gradientTransform="matrix(0.9745936,0,-0.12344127,0.36484256,0.41676882,0.78341877)" />
   </defs>
   <path
-     style="opacity:1;fill:#b9cfe7;fill-opacity:1;stroke:none;stroke-width:0.15807165;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.26457204, 0.63228303;stroke-dashoffset:0;stroke-opacity:1"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.15807165;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.26457204, 0.63228302999999997;stroke-dashoffset:0;stroke-opacity:1"
      d="M 0.75212622,3.3221365 H 5.6756506 L 5.087938,5.0591778 H 0.16441356 Z"
      id="path3795"
      inkscape:connector-curvature="0" />
@@ -99,7 +99,7 @@
      id="path3797"
      inkscape:connector-curvature="0" />
   <path
-     style="opacity:1;fill:#b9cfe7;fill-opacity:1;stroke:none;stroke-width:0.15807165;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.26457202, 0.63228302;stroke-dashoffset:0;stroke-opacity:1"
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.15807165;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:1.26457202, 0.63228302000000003;stroke-dashoffset:0;stroke-opacity:1"
      d="M 0.76039464,2.1643367 H 5.6839191 L 5.0962063,3.901378 H 0.17268198 Z"
      id="path3795-9"
      inkscape:connector-curvature="0"
