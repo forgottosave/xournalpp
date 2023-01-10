@@ -1599,7 +1599,6 @@ void Settings::setPresentationMode(bool presentationMode) {
         return;
     }
 
-    this->activeViewMode = VIEW_MODE_PRESENTATION;
     this->presentationMode = presentationMode;
     save();
 }
