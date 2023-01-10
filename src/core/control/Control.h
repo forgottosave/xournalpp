@@ -160,6 +160,7 @@ public:
 
     void updateWindowTitle();
     void setViewPairedPages(bool enabled);
+    void setViewFullscreenMode(bool enabled);
     void setViewPresentationMode(bool enabled);
     void setPairsOffset(int numOffset);
     void setViewColumns(int numColumns);
@@ -184,6 +185,11 @@ public:
     void endDragDropToolbar();
     void startDragDropToolbar();
     bool isInDragAndDropToolbar();
+
+    /**
+     * Loads the view mode (hide/show menu-,tool-&sidebar)
+     */
+    bool loadViewMode(size_t mode);
 
     bool isFullscreen();
 
