@@ -1,5 +1,7 @@
 #include "Control.h"
 
+// This is a demonstartion of git
+
 #include <algorithm>  // for max
 #include <cstdlib>    // for size_t
 #include <exception>  // for exce...
